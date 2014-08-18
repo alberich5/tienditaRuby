@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
+
+  devise_for :users
+  root 'products#index'
+
+  resources :departments
+
   resources :products
+
+  get 'nuevo_producto' => 'products#new', as: :nuevo_producto
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

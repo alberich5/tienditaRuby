@@ -7,6 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<p class="notice"><%= notice %></p>
+	<p class="alert"><%= alert %></p>
+
+	<p class="navbar-text pull-right">
+	<% if user_signed_in? %>
+	bienvenido <strong><%= current_user.email %></strong>
+	<%= link_to 'Editar profile', edit_user_registration_path, :class => 'nav-link' %>
+	<%= link_to "logout", destroy_user_session_path, method: :delete, :class => 'nav-link' %>
+	<% else %>
+	<%= link_to 'Sign up', new_user_registration_path, :class => 'nav-link' %>
+	<%= link_to 'login', new_user_session_path, :class => 'nav-link' %>
+	<% end %>
 
 <%= yield %>
 
